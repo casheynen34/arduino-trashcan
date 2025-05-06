@@ -64,7 +64,7 @@ void setup()
   tft.setCursor(60,190);
   tft.setTextColor(WHITE);
   tft.setTextSize(2);
-  tft.print("Lorem ipsum");
+  tft.print("Appel peer");
    delay(3000);
   tft.setRotation(0);
   //tft.reset();
