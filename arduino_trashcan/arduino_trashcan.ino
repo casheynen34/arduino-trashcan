@@ -26,13 +26,16 @@
 #define WHITE   0xFFFF
  
 Adafruit_TFTLCD tft(LCD_CS, LCD_CD, LCD_WR, LCD_RD, A4);
- 
+
+const int receivePin = A5;  // Use A5 instead of pin 1
+
 void setup()
 {
   Serial.begin(9600);
   tft.reset();
   uint16_t identifier = tft.readID();
   pinMode(10, OUTPUT);
+  pinMode(receivePin, INPUT);
   digitalWrite(10, HIGH);
   tft.begin(identifier);
   if (!SD.begin(SD_CS)) {
@@ -45,7 +48,12 @@ void setup()
  
 void loop()
 {
-  
+    int signal = digitalRead(receivePin);  // Read signal from Arduino 1
+
+    Serial.print("Received Signal: ");
+    Serial.println(signal);  // 1 if object detected, 0 otherwise
+
+    delay(100);
 }
  
  
