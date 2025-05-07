@@ -29,8 +29,6 @@ Adafruit_TFTLCD tft(LCD_CS, LCD_CD, LCD_WR, LCD_RD, A4);
  
 void setup()
 {
- 
- 
   Serial.begin(9600);
   tft.reset();
   uint16_t identifier = tft.readID();
@@ -42,43 +40,16 @@ void setup()
   return;
   }
  
-  tft.reset();
-  //uint16_t identifier = tft.readID();
-  tft.begin(identifier);
-  tft.setRotation(1);
-  tft.fillScreen(WHITE);
-  tft.drawRect(0,0,319,240,YELLOW);
- 
-  tft.setCursor(30,40);
-  tft.setTextColor(BLACK);
-  tft.setTextSize(2);
-  tft.print("Tech Trends Shameer");
- 
-  tft.setCursor(30,80);
-  tft.setTextColor(GREEN);
-  tft.setTextSize(2);
-  tft.print("Display Image in TFT");
- 
-  tft.fillRect(50,180, 210, 40, RED);
-  tft.drawRect(50,180,210,40,BLACK);
-  tft.setCursor(60,190);
-  tft.setTextColor(WHITE);
-  tft.setTextSize(2);
-  tft.print("Appel peer");
-   delay(3000);
-  tft.setRotation(0);
-  //tft.reset();
+  bmpDraw("new.bmp", 0, 0);
 }
  
 void loop()
 {
-  bmpDraw("testimage.bmp", 0, 0);      //Calling the bmpDraw function ("Name_of_your_image.bmp",x,y) (x,y) is the starting position of the picture drawing
-  delay(2000);
- 
+  
 }
  
  
-#define BUFFPIXEL 20           //Drawing speed, 20 is meant to be the best but you can use 60 altough it takes a lot of uno's RAM        
+#define BUFFPIXEL 85           //Drawing speed, 20 is meant to be the best but you can use 60 altough it takes a lot of uno's RAM        
  
 //Drawing function, reads the file from the SD card and do the
 //conversion and drawing, also it shows messages on the Serial monitor in case of a problem
